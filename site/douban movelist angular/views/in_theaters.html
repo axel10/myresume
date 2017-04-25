@@ -1,0 +1,50 @@
+<h3>总共</h3>
+<div class="panel panel-default" ng-repeat="data in subjects track by $index">
+    <div class="panel-body">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" ng-src={{data.images.medium}} alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{data.title}}</h4>
+                导演：<span ng-repeat="cast in data.casts">{{cast.name + ($last?'':'、')}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<nav>
+<!--    <ul class="pagination">
+
+        <li ng-repeat="page in pages" ng-class="($index+1)==activepage?'active':''">
+            <a href="{{'#/' +category + '/'+ ($index + 1)}}" >{{page}}</a>
+        </li>
+
+    </ul>-->
+
+    <ul class="pagination"  v-show="!loading">
+
+        <li ng-repeat="page in pages" ng-class="page==activepage?'active':''">
+            <a href="{{'#/' +category + '/'+ page + '?q='+q}}" >{{page}}</a>
+        </li>
+
+        <li ng-if="page<96 && total>7"><a>…</a></li>
+
+        <li ng-if="page<97 && total>7">
+            <a href="{{'#/' +category + '/'+ total + '?q='+q}}" >{{total}}</a>
+            <!--<a v-bind:href="'#/'+$route.params.category+'/'+total" @click="getData($route.params.category,total)">{{total}}</a>-->
+        </li>
+    </ul>
+    <form ng-submit="jump()">
+        <input type="text" ng-model="tiaozhuan">
+    </form>
+    <!--<input v-model="tiaozhuan" type="text" @keyup="jump($event)">-->
+</nav>
+
+<div class="sk-folding-cube" ng-show="!loaded">
+    <div class="sk-cube1 sk-cube"></div>
+    <div class="sk-cube2 sk-cube"></div>
+    <div class="sk-cube4 sk-cube"></div>
+    <div class="sk-cube3 sk-cube"></div>
+</div>

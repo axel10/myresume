@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul, ol, li {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+            content: ' ';
+            visibility: hidden;
+            clear: both;
+            height: 0;
+            line-height: 0;
+            display: block;
+        }
+
+        .wrap {
+            width: 100%;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wrap ul {
+            width: 1000%;
+            left: 0;
+            top: 0;
+            transition: all .3s;
+
+        }
+
+        .wrap ul li {
+            width: 10%;
+            float: left;
+        }
+
+        .wrap ul li a img {
+            width: 100%;
+        }
+
+        .wrap ol {
+            width: 200px;
+            height: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            display: block;
+            text-align: center;
+        }
+
+        .wrap ol li {
+            width: 5px;
+            height: 5px;
+            border-radius: 5px;
+            border: 1px solid #ffffff;
+            display: inline-block;
+        }
+
+        .wrap ol li.current {
+            background-color: #fff;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="clearfix">
+        <li><img src="img/1.jpg"> </li>
+        <li><img src="img/2.jpg"> </li>
+        <li><img src="img/3.jpg"> </li>
+        <li><img src="img/4.jpg"> </li>
+        <li><img src="img/5.jpg"> </li>
+    </ul>
+
+    <ol>
+        <li class="current"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    window.onload = function () {
+        var wrap = document.querySelector('.wrap');
+        var ul = document.querySelector('.wrap ul');
+        var ol = document.querySelector('.wrap ol');
+        var olLis = document.querySelectorAll('.wrap ol li');
+        var num = 1;
+        var timer;
+        var imgWidth = document.querySelector('.wrap ul li img').offsetWidth;
+        ul.style.transition = 'all 0s';
+        ul.style.transform = 'translateX(' + -imgWidth + 'px)';
+//        ul.style.transition = 'all .3s';
+//        console.log(imgWidth)
+
+        function olCurrent() {
+
+            for (var i = 0, len = olLis.length; i < len; i++) {
+
+                olLis[i].classList.remove('current');
+
+            }
+
+            if(num <= 8){
+
+                if(num > 0){
+                    olLis[num - 1].classList.add('current');
+                }else{
+                    olLis[7].classList.add('current');
+                }
+
+            }else{
+
+                olLis[0].classList.add('current');
+
+            }
+        }
+
+        function autoPlay() {
+            num++;
+
+            ul.style.transition = 'all .3s';
+
+            ul.style.transform = 'translateX(' + -(num * imgWidth) + 'px)';
+
+            olCurrent();
+
+            /*transform:translateX(10px);*/
+        }
+
+        timer = setInterval(autoPlay, 1000)
+
+        ul.addEventListener('webkitTransitionEnd',function () {
+
+            if(num > 8){
+
+                num = 1;
+
+                ul.style.transition = 'all 0s';
+
+                ul.style.transform = 'translate(' + -num * imgWidth + 'px)';
+            }
+
+            if(num < 1){
+
+                num = 8;
+
+                ul.style.transition = 'all 0s';
+
+                ul.style.transform = 'translate(' + -num * imgWidth + 'px)';
+
+            }
+        })
+
+        var moveX = 0;
+        var startX = 0;
+        var directionX = 0;
+
+        ul.addEventListener('touchstart',function (event) {
+
+            clearInterval(timer);
+
+            if(num > 8){
+
+                num = 1;
+
+                ul.style.transition = 'all 0s';
+
+                ul.style.transform = 'translate(' + -num * imgWidth + 'px)';
+            }
+
+            ul.style.transition = 'all 0s'
+
+            startX = event.touches[0].clientX;
+
+        })
+
+        ul.addEventListener('touchmove',function (event) {
+//            console.log(event.touches[0].clientX)
+
+            moveX = event.touches[0].clientX - startX;
+
+            ul.style.transform = 'translateX(' + (moveX - num*imgWidth) + 'px)';
+
+        })
+
+        ul.addEventListener('touchend',function (event) {
+
+            clearInterval(timer);
+
+            timer = setInterval(autoPlay , 1000)
+
+            directionX += moveX;
+
+            if(Math.abs(moveX) < imgWidth/3){
+
+                ul.style.transition = 'all .3s'
+
+                ul.style.transform = 'translateX(' + -num * imgWidth + 'px)';
+
+            }else{
+
+                if(moveX < 0){
+
+                    num++;
+
+                    ul.style.transition = 'all .3s';
+
+                    ul.style.transform = 'translate(' + -num * imgWidth + 'px)';
+
+                    olCurrent();
+
+                }else if(moveX > 0){
+
+                    num--;
+
+                    console.log(num);
+
+                    ul.style.transition = 'all .3s';
+
+                    ul.style.transform = 'translate(' + -num * imgWidth + 'px)';
+
+                    olCurrent();
+
+                }
+
+            }
+
+        })
+
+    }
+
+</script>
+</body>
+</html>

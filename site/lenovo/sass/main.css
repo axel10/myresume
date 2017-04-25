@@ -1,0 +1,410 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  min-width: 1280px;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif; }
+
+ul, li, ol {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #333; }
+
+.header {
+  width: 100%;
+  height: 40px;
+  background-color: #eeeeee; }
+  .header .content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative; }
+    .header .content .header-top ul li {
+      display: inline-block;
+      float: left;
+      margin-right: 20px;
+      line-height: 40px; }
+    .header .content .header-top .right-list {
+      position: absolute;
+      right: 0;
+      line-height: 40px; }
+
+.header-bottom {
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid #ccc; }
+  .header-bottom .content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative; }
+  .header-bottom .logo {
+    height: 100%;
+    line-height: 90px;
+    font-weight: 700;
+    text-align: center;
+    float: left; }
+  .header-bottom ul {
+    position: absolute;
+    right: 200px;
+    top: 0; }
+    .header-bottom ul li {
+      float: left;
+      display: inline-block;
+      margin-right: 20px;
+      line-height: 90px;
+      text-align: center; }
+      .header-bottom ul li a {
+        padding: 35px 10px; }
+  .header-bottom .cart {
+    position: absolute;
+    right: 100px;
+    padding: 15px 20px;
+    border: 1px solid #ccc;
+    top: 0;
+    margin-top: 20px; }
+
+.list {
+  position: absolute;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background: #fff;
+  z-index: 1000; }
+  .list .content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative; }
+    .list .content ul {
+      margin-left: -20px;
+      margin-top: 20px; }
+      .list .content ul li {
+        width: 200px;
+        float: left;
+        text-align: center; }
+        .list .content ul li img {
+          margin: 0 auto; }
+        .list .content ul li p {
+          margin: 0; }
+
+.carousel-opacity {
+  width: 100%;
+  height: 468px;
+  border-bottom: 1px solid #ccc; }
+  .carousel-opacity .box {
+    width: 100%;
+    min-width: 1280px;
+    height: 468px;
+    position: absolute; }
+  .carousel-opacity .content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 100; }
+    .carousel-opacity .content ol {
+      position: absolute;
+      text-align: center;
+      bottom: 20px;
+      right: 380px; }
+      .carousel-opacity .content ol li {
+        margin: 0 10px;
+        display: inline-block;
+        border: 2px solid #eee;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%; }
+        .carousel-opacity .content ol li.active {
+          background-color: #fff; }
+    .carousel-opacity .content span {
+      display: block;
+      width: 40px;
+      height: 80px;
+      background-color: #000;
+      opacity: .5;
+      position: absolute;
+      margin: 194px 0; }
+    .carousel-opacity .content .left-ctrl {
+      left: 240px; }
+    .carousel-opacity .content .right-ctrl {
+      right: 0; }
+    .carousel-opacity .content .left-list {
+      height: 100%;
+      width: 240px;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100; }
+      .carousel-opacity .content .left-list ul {
+        margin-left: 40px;
+        padding-top: 30px; }
+        .carousel-opacity .content .left-list ul li a {
+          display: block;
+          padding: 18px 0;
+          font-size: 17px;
+          color: #fff; }
+    .carousel-opacity .content .category {
+      visibility: hidden;
+      width: 500px;
+      height: 468px;
+      background-color: #fff;
+      position: absolute;
+      top: 0;
+      left: 240px; }
+      .carousel-opacity .content .category .left {
+        width: 50%;
+        position: relative;
+        padding-left: 30px;
+        top: 0;
+        padding-top: 30px;
+        color: #333;
+        box-sizing: border-box;
+        margin-left: 0;
+        float: left; }
+        .carousel-opacity .content .category .left li {
+          margin-bottom: 20px;
+          color: #333; }
+          .carousel-opacity .content .category .left li a {
+            padding: 0;
+            color: #333;
+            display: block;
+            height: 52px;
+            position: relative;
+            font-size: 16px;
+            line-height: 52px;
+            box-sizing: border-box;
+            padding-left: 54px; }
+            .carousel-opacity .content .category .left li a img {
+              position: absolute;
+              left: 0;
+              width: 50px; }
+      .carousel-opacity .content .category .right {
+        width: 50%;
+        position: relative;
+        padding-right: 30px;
+        top: 0;
+        padding-top: 30px;
+        color: #333;
+        box-sizing: border-box;
+        margin-left: 0;
+        float: right; }
+        .carousel-opacity .content .category .right li {
+          margin-bottom: 20px;
+          color: #333; }
+          .carousel-opacity .content .category .right li a {
+            padding: 0;
+            color: #333;
+            display: block;
+            height: 52px;
+            position: relative;
+            font-size: 16px;
+            line-height: 52px;
+            box-sizing: border-box;
+            padding-left: 54px; }
+            .carousel-opacity .content .category .right li a img {
+              position: absolute;
+              left: 0;
+              width: 50px; }
+
+.main {
+  width: 100%;
+  position: relative; }
+  .main .content {
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative; }
+    .main .content .product-area {
+      width: 100%;
+      position: relative; }
+      .main .content .product-area .product-header {
+        width: 100%;
+        height: 36px;
+        line-height: 36px; }
+      .main .content .product-area .product-row {
+        position: relative;
+        font-size: 0; }
+        .main .content .product-area .product-row.min {
+          float: right;
+          font-size: 0;
+          width: 960px; }
+          .main .content .product-area .product-row.min .box {
+            padding-top: 10px; }
+        .main .content .product-area .product-row .box {
+          position: relative;
+          text-align: center;
+          width: 240px;
+          display: inline-block; }
+          .main .content .product-area .product-row .box i {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            right: 40px;
+            top: 0;
+            background: url("../img/product-mark.png") no-repeat;
+            z-index: 1000; }
+            .main .content .product-area .product-row .box i.remai {
+              background-position: 0 0; }
+            .main .content .product-area .product-row .box i.zengpin {
+              background-position-x: 0px;
+              background-position-y: -200px; }
+          .main .content .product-area .product-row .box a {
+            display: block;
+            width: 100%; }
+            .main .content .product-area .product-row .box a h4 {
+              font-size: 20px;
+              margin: 10px 0 5px; }
+            .main .content .product-area .product-row .box a img {
+              transition: all .5s;
+              margin: 0 auto; }
+            .main .content .product-area .product-row .box a span {
+              font-size: 14px;
+              display: block; }
+            .main .content .product-area .product-row .box a p {
+              font-size: 16px; }
+              .main .content .product-area .product-row .box a p span {
+                font-size: 14px;
+                display: inline;
+                text-decoration: line-through; }
+            .main .content .product-area .product-row .box a:hover img {
+              transform: scale(1.05, 1.05); }
+      .main .content .product-area .image {
+        display: inline-block; }
+  .main .promise-footer {
+    width: 100%;
+    height: 142px;
+    background-color: #eee; }
+    .main .promise-footer .promise-box-wrap {
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      font-size: 0; }
+      .main .promise-footer .promise-box-wrap .promise-box {
+        width: 10%;
+        height: 100%;
+        margin-right: 240px;
+        display: inline-block;
+        position: relative;
+        text-align: center; }
+        .main .promise-footer .promise-box-wrap .promise-box a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0; }
+          .main .promise-footer .promise-box-wrap .promise-box a .promise-img {
+            width: 32px;
+            height: 30px;
+            background: url("../img/main-bg.png");
+            margin: 40px auto 20px; }
+            .main .promise-footer .promise-box-wrap .promise-box a .promise-img.lipin {
+              background-position: 0 -150px; }
+            .main .promise-footer .promise-box-wrap .promise-box a .promise-img.dun {
+              background-position: -45px -150px; }
+            .main .promise-footer .promise-box-wrap .promise-box a .promise-img.rili {
+              background-position: -85px -150px; }
+            .main .promise-footer .promise-box-wrap .promise-box a .promise-img.fangzi {
+              background-position: 0 -185px; }
+          .main .promise-footer .promise-box-wrap .promise-box a p {
+            font-size: 16px;
+            font-weight: bold;
+            transition: color .4s; }
+        .main .promise-footer .promise-box-wrap .promise-box:hover a p {
+          color: #2196f3; }
+  .main .footer {
+    width: 100%;
+    height: 186px; }
+    .main .footer .content {
+      margin: 0 auto; }
+      .main .footer .content .footer-list {
+        width: 230px;
+        float: left; }
+        .main .footer .content .footer-list p {
+          font-weight: bold;
+          font-size: 16px;
+          margin-bottom: 20px; }
+        .main .footer .content .footer-list ul {
+          font-size: 12px;
+          color: #666; }
+          .main .footer .content .footer-list ul li {
+            margin-bottom: 10px; }
+      .main .footer .content .right-box {
+        width: 240px;
+        float: right;
+        text-align: right; }
+        .main .footer .content .right-box .btn {
+          display: inline-block;
+          margin-top: 35px; }
+          .main .footer .content .right-box .btn a {
+            background-color: deepskyblue;
+            padding: 10px 20px;
+            color: #fff; }
+        .main .footer .content .right-box p {
+          margin-top: 30px;
+          line-height: 22px;
+          text-align: right;
+          font-size: 30px; }
+          .main .footer .content .right-box p span {
+            font-size: 14px;
+            color: #999; }
+  .main .footer-last {
+    width: 100%;
+    height: 60px;
+    background-color: #eee;
+    position: relative; }
+    .main .footer-last .content {
+      height: 100%;
+      box-sizing: border-box;
+      padding-top: 10px;
+            /* .globe{
+                 width: 106px;
+                 height: 35px;
+                 box-sizing: border-box;
+                 padding-left: 45px;
+                 background: url("../img/global-btn.png");
+                 background-position: 0 -42px;
+                 position: absolute;
+                 right: 0;
+                 bottom: 10px;
+                 line-height: 35px;
+                 .hover{
+                     width: 106px;
+                     height: 70px;
+                     box-sizing: border-box;
+                     padding-left: 45px;
+                     background: url("../img/global-btn.png");
+                     background-position: 0 -75px;
+                     position: absolute;
+                     left: 0;
+                     bottom: 0;
+                     line-height: 35px;
+                     background-color: #eee;
+                     box-shadow: 0 0 10px #ccc;
+
+                     div{
+                         line-height: 35px;
+                         &:nth-child(1){
+                             border-bottom: 1px solid #ccc;
+                             background-color: #eee;
+                         }
+                     }
+                 }
+
+                 &:hover{
+                     background-color: #fff;
+                     border:1px solid #ccc;
+                     .hover{
+
+                         display: block;
+                         border:1px solid #ccc;
+                         border-bottom: 0;
+                     }
+                 }
+             }*/ }
+      .main .footer-last .content p {
+        font-size: 14px;
+        color: #999; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="sass/css/main.css">
+    <!--html字体自适应-->
+
+    <script src="js/less.js"></script>
+</head>
+
+<body ng-app="Douban">
+
+<!--左侧盒子-->
+<div class="leftBox">
+    <div class="containe">
+        <div class="head">登录</div>
+        <ul>
+            <li>今日一刻</li>
+            <li>往期内容</li>
+            <li>热门作者</li>
+            <li>栏目浏览</li>
+            <li>我的喜欢</li>
+            <li>设置</li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <div class="left">夜晚</div>
+        <div class="right">离线</div>
+    </div>
+</div>
+
+<div class="mainBox">
+    <nav class="navbar navbar-inverse navbar-static-top" style="position: absolute;left: 0;right: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar" style="top: 3rem;">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="hotHeader">本周推荐</div>
+        <div class="authorList">
+            <div class="cont">
+                <img src="img/head.jpg" alt="">
+                <div class="text">
+                    <h3>什么鬼</h3>
+                    <p>tmd什么鬼</p>
+                </div>
+            </div>
+        </div>
+        <div class="authorList">
+            <div class="cont">
+                <img src="img/head.jpg" alt="">
+                <div class="text">
+                    <h3>什么鬼</h3>
+                    <p>tmd什么鬼</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="touchArea"></div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="js/jquery.js"></script>-->
+<!--<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>-->
+<script src="js/zepto/zepto.js"></script>
+<script src="js/zepto/fx.js"></script>
+<script>
+    function ontap(element, callback) {
+        var startTime = 0;
+        var isMove = false;
+        var maxTime = 200;
+        var startEvent;
+
+        element.addEventListener('touchstart',function (event) {
+            startTime = Date.now();
+            isMove = false;
+            startEvent = event;
+        });
+
+        element.addEventListener('touchmove',function () {
+            isMove = true;
+        });
+
+        element.addEventListener('touchend',function (e) {
+            if(isMove){
+                return;
+            }
+            if ((Date.now() - startTime) > maxTime ){
+                return;
+            }
+
+            callback.call(event.target);
+
+        })
+    }
+</script>
+<script>
+    window.onload = function () {
+
+        var toggleButton = document.querySelector('.navbar-toggle');
+        var leftBox = $('.leftBox');
+        var mainBox = $('.mainBox');
+        var mainBoxNative = document.querySelector('.mainBox');
+        var touchArea = $('.touchArea');
+        var tocuhAreaNative = touchArea.get(0);
+        var isToggle = false;
+
+        ontap(toggleButton,function () {
+
+            if(!isToggle){
+                leftBox.css({
+                    transform: 'translateX(0rem)',
+                })
+                mainBox.css({
+                    transform:'translateX(12.25rem)'
+                })
+                touchArea.css({
+                    transform: 'translateX(12.25rem)',
+                    display:'block'
+                })
+            }
+/*            else{
+                leftBox.css({
+                    transform: 'translateX(-12.25rem)',
+                })
+                mainBox.css({
+                    transform:'translateX(0rem)'
+                })
+            }*/
+            document.documentElement.style.overflow = "hidden";
+            isToggle = true;
+        });
+
+        ontap(tocuhAreaNative,function () {
+            leftBox.css({
+                transform: 'translateX(-12.25rem)',
+            });
+            mainBox.css({
+                transform:'translateX(0rem)'
+            });
+            touchArea.css({
+                transform: 'translateX(0rem)',
+                display:'none'
+            });
+            document.documentElement.style.overflow = "scroll";
+            isToggle = false;
+        })
+
+    }
+</script>
+</body>
+</html>

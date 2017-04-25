@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="douban">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="sass/css/main.css">
+    <!--html字体自适应-->
+    <style>
+        .sk-cube-grid {
+            width: 40px;
+            height: 40px;
+            margin: 100px auto;
+        }
+
+        .sk-cube-grid .sk-cube {
+            width: 33%;
+            height: 33%;
+            background-color: #333;
+            float: left;
+            -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+            animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+        }
+        .sk-cube-grid .sk-cube1 {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube2 {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube3 {
+            -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+        .sk-cube-grid .sk-cube4 {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube5 {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+        .sk-cube-grid .sk-cube6 {
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+        .sk-cube-grid .sk-cube7 {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+        .sk-cube-grid .sk-cube8 {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+        .sk-cube-grid .sk-cube9 {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+
+        @-webkit-keyframes sk-cubeGridScaleDelay {
+            0%, 70%, 100% {
+                -webkit-transform: scale3D(1, 1, 1);
+                transform: scale3D(1, 1, 1);
+            } 35% {
+                  -webkit-transform: scale3D(0, 0, 1);
+                  transform: scale3D(0, 0, 1);
+              }
+        }
+
+        @keyframes sk-cubeGridScaleDelay {
+            0%, 70%, 100% {
+                -webkit-transform: scale3D(1, 1, 1);
+                transform: scale3D(1, 1, 1);
+            } 35% {
+                  -webkit-transform: scale3D(0, 0, 1);
+                  transform: scale3D(0, 0, 1);
+              }
+        }
+    </style>
+
+</head>
+<body>
+<div class="leftBox">
+    <div class="containe">
+        <div class="head"></div>
+        <ul>
+            <li class="active"><a href="#/today">今日一刻</a></li>
+            <li><a href="#">往期内容</a></li>
+            <li><a href="#/author">热门作者</a></li>
+            <li><a href="#/module">栏目浏览</a></li>
+            <li><a href="#">我的喜欢</a></li>
+            <li><a href="#/setting">设置</a></li>
+        </ul>
+    </div>
+    <div class="bottom">
+        <div class="left">夜晚</div>
+        <div class="right">离线</div>
+    </div>
+</div>
+<div class="mainBox">
+    <nav class="navbar navbar-inverse navbar-static-top" style="position: absolute;left: 0;right: 0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed"
+                        data-target="#navbar" data-toggle="collapse">
+                            <span class="sr-only">
+                                Toggle navigation
+                            </span>
+                    <span class="icon-bar">
+                            </span>
+                    <span class="icon-bar">
+                            </span>
+                    <span class="icon-bar">
+                            </span>
+                </button>
+                <a class="navbar-brand" href="#" ng-bind="title">
+
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div ng-view></div>
+
+            <div class="sk-cube-grid" ng-if="!loaded">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>
+
+        <!--<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="..." alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                ...
+            </div>
+        </div>
+    </div>
+</div>-->
+    </div>
+</div>
+<div class="touchArea">
+</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="js/jquery.js"></script>-->
+<!--<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>-->
+<script src="js/zepto/zepto.js"></script>
+<script>
+    function ontap(element, callback) {
+        var startTime = 0;
+        var isMove = false;
+        var maxTime = 200;
+        var startEvent;
+
+        element.addEventListener('touchstart', function (event) {
+            startTime = Date.now();
+            isMove = false;
+            startEvent = event;
+        });
+
+        element.addEventListener('touchmove', function () {
+            isMove = true;
+        });
+
+        element.addEventListener('touchend', function (e) {
+            if (isMove) {
+                return;
+            }
+            if ((Date.now() - startTime) > maxTime) {
+                return;
+            }
+
+            callback.call(element);
+
+        })
+    }
+</script>
+<script src="js/animate.js"></script>
+<script src="js/angular.js"> </script>
+<script src="js/angular-route.js"></script>
+<script src="source/app.js"></script>
+<script src="source/controllers.js"></script>
+<script>
+window.onload = function () {
+    var toggleButton = document.querySelector('.navbar-toggle');
+    var leftBox = $('.leftBox');
+    var leftBoxNative = leftBox.get(0);
+    var mainBox = $('.mainBox');
+    var mainBoxNative = document.querySelector('.mainBox');
+    var touchArea = $('.touchArea');
+    var tocuhAreaNative = touchArea.get(0);
+    var lis = $('.leftBox .containe ul li');
+    var isToggle = false;
+
+
+    function moveRight() {
+
+        if (!isToggle) {
+
+            animate({
+                el: leftBoxNative,
+                translateX: '0rem',
+                duration: '.3s'
+            });
+
+            animate({
+                el: mainBoxNative,
+                translateX: '12.25rem',
+                duration: '.3s'
+            });
+
+            animate({
+                el: tocuhAreaNative,
+                translateX: '12.25rem',
+                duration: '.3s'
+            });
+
+            touchArea.css('display', 'block');
+
+        }
+
+        document.documentElement.style.overflow = "hidden";
+        isToggle = true;
+        console.log('right')
+
+    }
+
+    function moveLeft() {
+
+        animate({
+            el: leftBoxNative,
+            translateX: '-12.25rem',
+            duration: '.3s'
+        });
+
+        animate({
+            el: mainBoxNative,
+            translateX: '0rem',
+            duration: '.3s'
+        });
+
+        animate({
+            el: tocuhAreaNative,
+            translateX: '0rem',
+            duration: '.3s'
+        });
+
+        touchArea.css('display', 'none');
+
+        document.documentElement.style.overflow = "scroll";
+        isToggle = false;
+        console.log('left')
+    }
+
+    ontap(toggleButton, moveRight);
+
+    ontap(tocuhAreaNative, moveLeft)
+
+    $('.leftBox a').each(function () {
+        ontap(this, moveLeft)
+    })
+
+    lis.each(function () {
+        ontap(this, function () {
+            lis.removeClass('active');
+            $(this).addClass('active');
+        })
+    })
+}
+</script>
+</body>
+</html>

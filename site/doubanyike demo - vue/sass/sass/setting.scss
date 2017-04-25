@@ -1,0 +1,28 @@
+.setting{
+    background-color: #f8f8f8;
+    font-size: 1rem;
+    font-family: "Microsoft YaHei";
+
+    .divGroup{
+        border-top: 1px solid #ccc;
+        margin-top: 1.5rem;
+        .list{
+            margin-top: 0;
+            border-top: 0;
+        }
+    }
+
+    .divGroup:nth-child(1){
+        margin-top: 0;
+        border-top: 0;
+    }
+
+    .list{
+        width: 100%;
+        padding:0.775rem 0 0.775rem 0.7rem;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-top: 1.5rem;
+        background-color: #fff;
+    }
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="sass/css/main.css">
+</head>
+<body>
+<div class="box">
+    <div class="leftBox">
+        <div class="containe">
+            <div class="head"></div>
+            <ul>
+                <li class="active"><router-link to="/today">今日一刻</router-link></li>
+                <li><router-link to="">往期内容</router-link></li>
+                <li><router-link to="/author">热门作者</router-link></li>
+                <li><router-link to="/module">栏目浏览</router-link></li>
+                <li><router-link to="">我的喜欢</router-link></li>
+                <li><router-link to="/setting">设置</router-link></li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <div class="left">夜晚</div>
+            <div class="right">离线</div>
+        </div>
+    </div>
+    <div class="bottombox">
+        <div class="today">
+            <router-link to="/today">今日一刻</router-link>
+        </div>
+        <div class="today">
+            <router-link to="/module">栏目浏览</router-link>
+        </div>
+    </div>
+    <div class="mainBox">
+        <nav class="navbar navbar-inverse navbar-static-top" style="position: absolute;left: 0;right: 0;">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" class="navbar-toggle collapsed"
+                            data-target="#navbar" data-toggle="collapse">
+                            <span class="sr-only">
+                                Toggle navigation
+                            </span>
+                        <span class="icon-bar">
+                            </span>
+                        <span class="icon-bar">
+                            </span>
+                        <span class="icon-bar">
+                            </span>
+                    </button>
+                    <!--                    <a class="navbar-brand" href="#" ng-bind="title">
+
+                                        </a>-->
+                </div>
+            </div>
+        </nav>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+
+
+            <!--loading动画
+            <div class="sk-cube-grid" ng-if="!loaded">
+                <div class="sk-cube sk-cube1"></div>
+                <div class="sk-cube sk-cube2"></div>
+                <div class="sk-cube sk-cube3"></div>
+                <div class="sk-cube sk-cube4"></div>
+                <div class="sk-cube sk-cube5"></div>
+                <div class="sk-cube sk-cube6"></div>
+                <div class="sk-cube sk-cube7"></div>
+                <div class="sk-cube sk-cube8"></div>
+                <div class="sk-cube sk-cube9"></div>
+            </div>-->
+
+            <!--<div class="panel panel-default">
+        <div class="panel-body">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="..." alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4>
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>-->
+        </div>
+    </div>
+    <div class="touchArea">
+    </div>
+</div>
+
+<script>
+    function ontap(element, callback) {
+        var startTime = 0;
+        var isMove = false;
+        var maxTime = 200;
+        var startEvent;
+
+        element.addEventListener('touchstart',function (event) {
+            startTime = Date.now();
+            isMove = false;
+            startEvent = event;
+        });
+
+        element.addEventListener('touchmove',function () {
+            isMove = true;
+        });
+
+        element.addEventListener('touchend',function (e) {
+            if(isMove){
+                return;
+            }
+            if ((Date.now() - startTime) > maxTime ){
+                return;
+            }
+
+            callback.call(event.target);
+
+        })
+    }
+
+</script>
+<script>
+    var animate=function(){var d={delay:0,duration:400,easing:"ease"},g=function(){return Array.prototype.includes?function(b,a){return b.includes(a)}:function(b,a){return b.some(function(b){return b===a})}}(),h=function(){var b=function(a){return/\D$/.test(a)?a:a+"ms"};return function(a,c){var f={property:"opacity,"+e(),duration:b(c.duration||d.duration),"timing-function":c.easing||d.easing,delay:b(c.delay||d.delay)};Object.keys(f).forEach(function(b){a.style["transition-"+b]=f[b]})}}(),k=function(b){var a=
+        function(c){c.target.removeEventListener("transitionend",a);b.complete&&b.complete.call(c.target)};return a},l=function(b,a){void 0!=a.opacity&&(b.style.opacity=a.opacity)},e=function(){var b;return function(){b||(b="transform"in document.body.style?"transform":"-webkit-transform");return b}}(),m=function(){var b=["complete","el","opacity"].concat(Object.keys(d));return function(a){return!g(b,a)}}(),n=function(b){return Object.keys(b).filter(function(a){return m(a)})},p=function(){return function(b,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              a){var c=n(a);c.length&&(b.style[e()]=c.map(function(b){var c;c=a[b];c=/\D$/.test(c)||/scale/.test(b)?c:/rotate|skew/.test(b)?c+"deg":c+"px";return b+"("+c+")"}).join(" "))}}(),q=function(b){return function(a){requestAnimationFrame(function(){[h,l,p].forEach(function(c){c(a,b)})});a.addEventListener("transitionend",k(b))}};return function(b){return function(a){"object"==typeof a&&b(a)}}(function(b){var a=b.el;if("string"==typeof a)var c=document,a=/^[\#.]?[\w-]+$/.test(a)?"."==a[0]?c.getElementsByClassName(a.slice(1)):
+            "#"==a[0]?c.getElementById(a.slice(1)):c.getElementsByTagName(a):c.querySelectorAll(a);(a.nodeType?[a]:Array.isArray(a)?a:[].slice.call(a)).forEach(q(b))})}();
+</script>
+<script src="js/ajax.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
+<script src="source/routerConfig.js"></script>
+<script src="source/main.js"></script>
+<script>
+    window.onload = function () {
+        var toggleButton = document.querySelector('.navbar-toggle');
+        var leftBox = $('.leftBox');
+        var leftBoxNative = leftBox.get(0);
+        var mainBox = $('.mainBox');
+        var mainBoxNative = document.querySelector('.mainBox');
+        var touchArea = $('.touchArea');
+        var tocuhAreaNative = touchArea.get(0);
+        var lis = $('.leftBox .containe ul li');
+        var isToggle = false;
+
+
+        function moveRight() {
+
+            if (!isToggle) {
+
+                animate({
+                    el: leftBoxNative,
+                    translateX: '0rem',
+                    duration: '.3s'
+                });
+
+                animate({
+                    el: mainBoxNative,
+                    translateX: '12.25rem',
+                    duration: '.3s'
+                });
+
+                animate({
+                    el: tocuhAreaNative,
+                    translateX: '12.25rem',
+                    duration: '.3s'
+                });
+
+                touchArea.css('display', 'block');
+
+            }
+
+            document.documentElement.style.overflow = "hidden";
+            isToggle = true;
+            console.log('right')
+
+        }
+
+        function moveLeft() {
+
+            animate({
+                el: leftBoxNative,
+                translateX: '-12.25rem',
+                duration: '.3s'
+            });
+
+            animate({
+                el: mainBoxNative,
+                translateX: '0rem',
+                duration: '.3s'
+            });
+
+            animate({
+                el: tocuhAreaNative,
+                translateX: '0rem',
+                duration: '.3s'
+            });
+
+            touchArea.css('display', 'none');
+
+            document.documentElement.style.overflow = "scroll";
+            isToggle = false;
+            console.log('left')
+        }
+
+        ontap(toggleButton, moveRight);
+
+        ontap(tocuhAreaNative, moveLeft)
+
+        $('.leftBox a').each(function () {
+            ontap(this, moveLeft)
+        })
+
+        lis.each(function () {
+            ontap(this, function () {
+                lis.removeClass('active');
+                $(this).addClass('active');
+            })
+        })
+    }
+</script>
+
+</body>
+</html>

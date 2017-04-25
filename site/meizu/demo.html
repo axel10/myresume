@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 200px;
+        }
+
+        .left{
+            width: 200px;
+            height: 100%;
+            float: left;
+            background-color: #ccc;
+        }
+        .right{
+            height: 100%;
+            background: coral;
+        }
+
+        @keyframes meizu {
+            0% {
+                opacity: 0;
+                transform: translateX(150px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+<a class="check">把鼠标移到这里</a>
+<input type="text" id="input">
+<div class="box">
+    <div class="left">
+
+    </div>
+    <div class="right"></div>
+</div>
+
+<ul id="target" class="box">
+
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/ajax.js"></script>
+
+
+
+<script>
+    $('.box div').on('mouseover',function () {
+        $(this).css('background','#000');
+    })
+</script>
+
+<script>
+    document.querySelector('.check').onclick = function () {
+        var xhr;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest;
+        } else {
+            xhr = ActiveXObject("Microsoft.XMLHTTP")
+        }
+        xhr.open('get', './product2.json');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status >= 200 < 300 || xhr.status == 304) {
+                    console.log(xhr.responseText)
+                }
+            }
+        };
+        xhr.send()
+    }
+
+
+</script>
+<script>
+    $('#input').on('keyup', function () {
+        var url = 'https://www.baidu.com/su?wd=' + $(this).val() + '&cb=abc';
+        var script = document.createElement('script');
+        script.src = url;
+        document.body.appendChild(script);
+    });
+    function abc(data) {
+        console.log(data);
+    }
+</script>
+
+<script>
+    /*    window.onload = function () {
+     getData({
+     area:'.check',
+     ul:'#target'
+     })
+     };
+
+
+     function getData(setting) {
+     var check = $(setting.area);
+     var ul = $(setting.ul);
+
+     function ask() {
+     ul.css('display', 'block');
+     ajax({
+     url: './tsconfig.json',
+     success: function (res) {
+     var data = JSON.parse(res);
+     for (var i = 0, len = data.content.length; i < len; i++) {
+     //                    console.log(data.content[i].describe)
+     $('<li style="animation:meizu .8s"><a href=""><img src="' + data.content[i].img + '" alt=""><p>' + data.content[i].describe + '</p></a></li>').appendTo(ul);
+     }
+     }
+     })
+     }
+
+     check.on('mouseover', function () {
+     ul.html('');
+     ask();
+     }).on('mouseout', function () {
+     ul.css('display','none')
+     });
+
+     }*/
+</script>
+
+<!--<script>
+    window.onload =function () {
+        var str = 'a=1&b=2&c=3';
+        function toQueryParams(){
+            var search = this.replace(/^\s+/,'').replace(/\s+$/,'').match(/([^?#]*)(#.*)?$/);//提取location.search中'?'后面的部分
+            if(!search){
+                return {};
+            }
+            var searchStr  = search[1];
+            var searchHash = searchStr.split('&');
+
+            var ret = {};
+            for(var i = 0, len = searchHash.length; i < len; i++){ //这里可以调用each方法
+                var pair = searchHash[i];
+                if((pair = pair.split('='))[0]){
+                    var key   = decodeURIComponent(pair.shift());
+                    var value = pair.length > 1 ? pair.join('=') : pair[0];
+
+                    if(value != undefined){
+                        value = decodeURIComponent(value);
+                    }
+                    if(key in ret){
+                        if(ret[key].constructor != Array){
+                            ret[key] = [ret[key]];
+                        }
+                        ret[key].push(value);
+                    }else{
+                        ret[key] = value;
+                    }
+                }
+            }
+            return ret;
+        }
+        console.log(toQueryParams.call(str));
+
+    }
+</script>-->
+<script>
+    var man = function () {
+        this.name = 'yaya';
+        this.age = '123'
+    };
+
+    man.prototype.eat =function () {
+        console.log('eat')
+    };
+
+    var person = new man();
+
+    console.log(person)
+    person.eat()
+</script>
+</body>
+</html>

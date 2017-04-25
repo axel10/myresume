@@ -1,0 +1,185 @@
+        @media only screen and (width: 320px) {
+            html {
+                font-size: 16px;
+            }
+        }
+
+        @media only screen and (width: 360px) {
+            html {
+                font-size: 18px;
+            }
+        }
+
+        @media only screen and (width: 375px) {
+            html {
+                font-size: 18.75px;
+            }
+        }
+
+        @media only screen and (width: 400px) {
+            html {
+                font-size: 20px;
+            }
+        }
+
+        @media only screen and (width: 411px) {
+            html {
+                font-size: 20.55px;
+            }
+        }
+
+        @media only screen and (width: 414px) {
+            html {
+                font-size: 20.7px;
+            }
+        }
+
+        @media only screen and (min-width: 640px) {
+            html {
+                font-size: 32px;
+            }
+        }
+
+
+
+        body {
+            padding: 0;
+        }
+
+        .main {
+            padding-top: 50px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .listBox {
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            padding: 0 1.25rem;
+        }
+
+        .cont {
+            padding: 1.35rem 0;
+        }
+
+        .listBox h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.7rem;
+            line-height: 1.5rem;
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        .listBox .minBox {
+            position: relative;
+            margin-top: 10px;
+            text-overflow: ellipsis;
+        }
+
+        .listBox .minBox img {
+            width: 7.5rem;
+            position: absolute;
+            right: 0.25rem;
+            top: 0;
+        }
+
+        .listBox .minBox p {
+            width: 100%;
+            font-size: 0.75rem;
+            padding-right: 8rem;
+        }
+
+        .mainBox {
+            transition: all .3s;
+        }
+
+
+
+        .listBox span {
+            display: block;
+            width: 4.1875rem;
+            text-align: center;
+            background-color: skyblue;
+            border-radius: 0 0 3px 3px;
+            padding: 0.25rem 0;
+            color: #fff;
+            font-size: 0.75rem;
+        }
+
+        .gallery {
+            background: url("/img/gallery.png");
+            background-size: contain;
+            height: 10.8125rem;
+            padding-top: 0.5625rem;
+            padding-right: 0.5625rem;
+            box-sizing: border-box;
+        }
+
+        .gallery img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .touchArea{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            display: none;
+        }
+
+        .leftBox {
+            width: 12.25rem;
+            height: 100%;
+            background-color: #eee;
+            position: fixed;
+            left: 0;
+            top: 0;
+            transition: all .3s;
+            transform: translateX(-12.25rem);
+        }
+
+        .leftBox .containe{
+            position: absolute;
+            left:2rem;
+            top: 2rem;
+        }
+
+        .leftBox .containe .head{
+            font-family: serif;
+            font-size: 1.3rem;
+        }
+
+        .leftBox .containe ul,li{
+            padding-top: 2rem;
+            list-style: none;
+            font-size: 1.3rem;
+            line-height: 1.2rem;
+            padding-left:0;
+        }
+
+        .leftBox .bottom{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height:2rem;
+            border-top: 1px solid #ccc;
+            font-size: 1rem;
+            line-height: 2rem;
+        }
+
+        .leftBox .bottom .left{
+            width: 50%;
+            height: 100%;
+            border-right: 1px solid #ccc;
+            text-align: center;
+            float:left;
+        }
+        .leftBox .bottom .right{
+            float: left;
+            text-align: center;
+            width: 50%;
+            
+        }

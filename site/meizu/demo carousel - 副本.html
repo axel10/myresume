@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+        }
+        ul,li,ol{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .wrap{
+            overflow: hidden;
+            position: relative;
+            height:auto;
+            width: 100%;
+            margin:0 auto;
+        }
+        ul li{
+            width: 100%;
+            background-size:cover;
+            position: absolute;
+            top:0;
+            text-align: center;
+            transition:all .5s;
+        }
+
+        ul li img{
+            width: 100%;
+            display: inline-block;
+        }
+
+        ol{
+            z-index:10;
+            width: 200px;
+            height: 20px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 10px;
+            margin:auto;
+            text-align: center;
+
+        }
+        ol li{
+            width: 14px;
+            height: 14px;
+            border:1px solid gray;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        ol li.active{
+            background-color: gray;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <ol>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    function carousel(imgboxs,ctrls,duration,bDuration,distance) {
+        /*    var imgboxs = $('.big-wrap');
+         var ctrls = $('.ctrl span');
+         var  duration = 500;
+         var bDuration = 300;*/
+
+        var imgboxs = $(imgboxs);
+        var ctrls = $(ctrls);
+        var duration = duration || 500;
+        var bDuration = bDuration || 300;
+        var distance = distance || 5;
+
+        var imgWidth = imgboxs.width();
+        var num = 0;
+        var x;
+        var down = false;
+        var mx;
+        var timer;
+
+        imgboxs.eq(0).css({position:'relative',zIndex:5});
+
+        for (var i = 0, len = imgboxs.length; i < len; i++) {
+            var img =$('<img src="img/'+ (i+1) +'.jpg">');
+            img.appendTo(imgboxs.eq(i));
+        }
+
+        function autoplay() {
+            imgboxs.eq(num)
+                .css({
+                    left: -imgWidth
+                });
+
+            num++;
+
+            if (num >= imgboxs.length) {
+                num = 0;
+            }
+
+            ctrls.eq(num).addClass('active').siblings().removeClass('active');
+
+            imgboxs.eq(num)
+                .css({
+                    left: imgWidth,
+                    zIndex: 5
+                })
+                .css({
+                    left: 0
+                }, duration, function () {
+                    imgboxs.eq(num).siblings().css('zIndex', 3)
+                })
+        }
+
+
+/*            timer = setInterval(function () {
+         autoplay();
+         },1000);*/
+
+
+        imgboxs.bind('touchstart', function (event) {
+            x = event.touches[0].clientX;
+
+            down = true;
+        });
+        imgboxs.bind('touchmove', function (event) {
+
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty()
+
+            if (down) {
+                mx = event.touches[0].clientX - x;
+
+                // console.log(mx,checkMove - x);
+
+
+                imgboxs.eq(num - 1).css({left: -imgWidth + mx, zIndex: 5})
+
+                if (num == imgboxs.length - 1) {
+
+                    imgboxs.eq(0).css({left: imgWidth + mx, zIndex: 5})
+
+                } else {
+                    imgboxs.eq(num + 1).css({left: imgWidth + mx, zIndex: 5})
+                }
+
+                imgboxs.eq(num).css({left: mx})
+
+
+            }
+        });
+        imgboxs.bind('touchend', function () {
+            down = false;
+            if(mx == 0){
+                return
+            }
+            if (Math.abs(mx) > (imgWidth / distance) && mx < 0) {
+                imgboxs.eq(num).animate({left: -imgWidth}, duration);
+                num++;
+                if (num >= imgboxs.length) {
+                    num = 0;
+                }
+                imgboxs.eq(num).animate({left: 0}, duration);
+            }
+
+            if (Math.abs(mx) > (imgWidth / distance) && mx > 0) {
+                imgboxs.eq(num).animate({left: imgWidth}, duration);
+                num--;
+                if (num < 0) {
+                    num = imgboxs.length - 1;
+                }
+                imgboxs.eq(num).animate({left: 0}, duration);
+            }
+
+            if (Math.abs(mx) <= (imgWidth / distance)) {
+
+                imgboxs.eq(num).stop().animate({left: 0},bDuration);
+
+                if (mx < 0) {
+                    if (num < imgboxs.length - 1) {
+                        imgboxs.eq(num + 1).stop().animate({left: imgWidth},bDuration)
+                    } else {
+                        imgboxs.eq(0).stop().animate({left: imgWidth},bDuration)
+                    }
+                }
+
+                if (mx > 0) {
+                    imgboxs.eq(num - 1).stop().animate({left: -imgWidth},bDuration)
+                }
+
+            }
+
+            mx = 0;
+
+            ctrls.eq(num).addClass('active').siblings().removeClass('active');
+
+        });
+
+    }
+
+</script>
+<script>
+    carousel('.wrap ul li','.wrap ol li')
+</script>
+</body>
+</html>

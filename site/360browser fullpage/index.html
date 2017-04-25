@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+<!--    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            width: 251px;
+            height: 186px;
+            background: url("img/logo.png");
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100px;
+            margin: auto;
+        }
+
+        .section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info1 {
+            width: 772px;
+            height: 49px;
+            background: url("img/info_1.png");
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 120px;
+            margin: auto;
+        }
+
+        .info2 {
+            width: 635px;
+            height: 309px;
+            background: url("img/info_2.png");
+            position: absolute;
+            right: 70px;
+            top: 150px;
+        }
+
+        .info3 {
+            width: 631px;
+            height: 278px;
+            background: url("img/info_3.png");
+            position: absolute;
+            left: 70px;
+            top: 120px;
+        }
+
+        .info4 {
+            width: 612px;
+            height: 299px;
+            background: url("img/info_4.png");
+            position: absolute;
+            right: 70px;
+            top: 200px;
+        }
+
+        .info5 {
+            width: 1077px;
+            height: 134px;
+            background: url("img/info_5.png");
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 20px;
+            margin: auto;
+        }
+
+        .text {
+            text-align: center;
+            width: 1090px;
+            height: 93px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 220px;
+            margin: auto;
+        }
+
+        .text img {
+            display: inline-block;
+            margin: 0 20px;
+            opacity: 0;
+        }
+
+        .current .text img {
+            transition: all 1s;
+            margin: 0 4px;
+            opacity: 1;
+        }
+
+        .dun {
+            width: 450px;
+            height: 500px;
+            position: absolute;
+            left: 100px;
+            top: 70px;
+            font-size: 0;
+        }
+
+        .dun img:nth-child(1) {
+            transform: translate(-160px, -140px) rotate(42deg);
+        }
+
+        .dun img:nth-child(2) {
+            transform: translate(-160px, 140px) rotate(20deg);
+        }
+
+        .dun img:nth-child(3) {
+            transform: translate(200px, 110px) rotate(30deg);
+        }
+
+        .dun img:nth-child(4) {
+            transform: translate(360px, 58px) rotate(-50deg);
+        }
+
+        .dun img:nth-child(5) {
+            transform: translate(280px, 90px) rotate(-24deg);
+        }
+
+        .dun img:nth-child(6) {
+            transform: translate(160px, -90px) rotate(10deg);
+        }
+
+        .dun img:nth-child(7) {
+            transform: translate(180px, -80px) rotate(210deg);
+        }
+
+        .dun img:nth-child(8) {
+            transform: translate(280px, 100px) rotate(38deg);
+        }
+
+        .dun img:nth-child(9) {
+            transform: translate(310px, 80px) rotate(59deg);
+        }
+
+        .current .dun img {
+            transition: all 1s;
+            transform: translate(0) rotate(0deg);
+        }
+
+        .circle {
+            position: absolute;
+            right: 100px;
+            top: 90px;
+            animation: turn 4s linear infinite;
+        }
+
+        @keyframes turn {
+            0% {
+                transform: rotate(0deg)
+            }
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+
+        .rocket {
+            position: absolute;
+            right: 220px;
+            top: 190px;
+            transform: translate(-900px, 600px);
+        }
+
+        .current .rocket {
+            transform: translate(0);
+            transition: all 1s;
+        }
+
+        .tag {
+            position: absolute;
+            width: 530px;
+            height: 470px;
+            left: 60px;
+            top: 120px;
+        }
+
+        .tag img:nth-child(1) {
+            opacity: 0;
+        }
+
+        .current .tag img:nth-child(1) {
+            opacity: 1;
+            transition: all 1s;
+
+        }
+
+        .tag .key {
+            width: 0;
+            height: 22px;
+            background: url("img/key.png");
+            position: absolute;
+            left: 0;
+            top: 10px;
+            margin-top: 14px;
+            margin-left: 18px;
+        }
+
+        .current .tag .key {
+            animation: keymove .5s steps(5) 1.2s forwards;
+        }
+
+        /*        .tag img:nth-child(2){
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    margin-top: 14px;
+                    margin-left: -120px;
+
+                }*/
+        @keyframes keymove {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 99px;
+            }
+        }
+
+        .tag .result {
+            margin-top: -18px;
+            overflow: hidden;
+        }
+
+        .tag .result img {
+            transform: translate(0px, -380px);
+        }
+
+        .current .tag .result img {
+            transition: all .5s ease-out;
+            transition-delay: 2.1s;
+            transform: translate(0);
+        }
+
+        /*第五屏*/
+        .browser {
+            width: 1004px;
+            height: 467px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .left-line, .right-line, .top-line {
+            position: absolute;
+        }
+
+        .left-line {
+            position: absolute;
+            width: 1px;
+            height: 467px;
+            left: 0;
+            background-color: #fff;
+            opacity: 0;
+            transform: translate(0, -800px)
+
+        }
+
+        .top-line {
+            position: absolute;
+            width: 1004px;
+            height: 1px;
+            top: 0;
+            background-color: #fff;
+            opacity: 0;
+            transform: translate(1100px)
+        }
+
+        .right-line {
+            position: absolute;
+            width: 1px;
+            height: 467px;
+            right: 0;
+            background-color: #fff;
+            opacity: 0;
+            transform: translate(0, 700px)
+        }
+
+        .bottom-line {
+            position: absolute;
+            width: 1004px;
+            height: 1px;
+            bottom: 30px;
+            background-color: #fff;
+            opacity: .5;
+
+        }
+
+        .box {
+            position: absolute;
+            bottom: 0;
+
+        }
+
+        .toolbar {
+            position: absolute;
+            top: 2px;
+            opacity: 0;
+        }
+
+        .box {
+            position: absolute;
+            border: #fff solid 0px;
+            left: 70px;
+            top: 32px;
+            width: 0;
+            /*width: 920px;*/
+            height: 27px;
+            opacity: .5;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .extra {
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            opacity: 0;
+        }
+
+        .current .box {
+            border: #fff solid 1px;
+            transition: all 1s;
+            width: 920px;
+            transition-delay: 1s;
+        }
+
+        .current .toolbar {
+            transition: all 1s;
+            transition-delay: 2s;
+            opacity: 1;
+
+        }
+
+        .current .extra {
+            transition: all 1s;
+            transition-delay: 2s;
+            opacity: 1;
+
+        }
+
+        .current .top-line {
+            transition: all 1s;
+            transform: translate(0px);
+            opacity: .5;
+        }
+
+        .current .left-line {
+            transition: all 1s;
+            transform: translate(0px);
+            opacity: .5;
+        }
+
+        .current .right-line {
+            transition: all 1s;
+            transform: translate(0px);
+            opacity: .5;
+        }
+
+    </style>-->
+    <link rel="stylesheet" href="sass/main.css">
+</head>
+<body>
+
+<div id="dowebok">
+    <div class="section">
+        <div class="wrap">
+            <div class="logo"></div>
+            <div class="text">
+                <img src="img/text_1.png" alt="">
+                <img src="img/text_2.png" alt="">
+                <img src="img/text_3.png" alt="">
+                <img src="img/text_4.png" alt="">
+                <img src="img/text_5.png" alt="">
+                <img src="img/text_6.png" alt="">
+                <img src="img/text_7.png" alt="">
+                <img src="img/text_8.png" alt="">
+            </div>
+            <div class="info1"></div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="wrap">
+            <div class="info2"></div>
+
+            <div class="dun">
+                <img src="img/shield_1.png" alt="">
+                <img src="img/shield_2.png" alt="">
+                <img src="img/shield_3.png" alt="">
+                <img src="img/shield_4.png" alt="">
+                <img src="img/shield_5.png" alt="">
+                <img src="img/shield_6.png" alt="">
+                <img src="img/shield_7.png" alt="">
+                <img src="img/shield_8.png" alt="">
+                <img src="img/shield_9.png" alt="">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="wrap">
+            <div class="info3"></div>
+            <div class="rac">
+                <div class="circle"><img src="img/circle.png" alt=""></div>
+                <div class="rocket"><img src="img/rocket.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="wrap">
+            <div class="info4"></div>
+            <div class="tag">
+                <img src="img/search.png" alt="">
+                <div class="key"></div>
+                <div class="result"><img src="img/result.png" alt=""></div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="info5"></div>
+        <div class="browser">
+            <div class="left-line"></div>
+            <div class="top-line"></div>
+            <div class="right-line"></div>
+            <div class="bottom-line"></div>
+            <div class="box"></div>
+            <div class="toolbar"><img src="img/toolbar.png" alt=""></div>
+            <div class="extra"><img src="img/extra.png" alt=""></div>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script src="js/vendor/jquery-1.12.0.min.js"></script>
+<script src="fullpage.js"></script>
+<script>
+    $(function () {
+        $('#dowebok').fullpage({
+            sectionsColor: ['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+            afterLoad: function (anchor, index) {
+                $('.section').removeClass('current');
+                setTimeout(function () {
+                    $('.section').eq(index - 1).addClass('current')
+                }, 100)
+            },
+            scrollingSpeed: 100
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<div class="hotHeader">本周推荐</div>
+<div class="authorList" ng-repeat="rec in recs">
+    <div class="cont">
+        <img ng-src="{{rec.large_avatar}}" alt="">
+        <div class="text">
+            <h3>{{rec.name}}</h3>
+            <p>{{rec.alt}}</p>
+        </div>
+    </div>
+</div>
+
+
+<div class="br">
+    热门作者
+</div>
+
+
+<div class="authorList" ng-repeat="all in alls">
+    <div class="cont">
+        <img ng-src="{{all.large_avatar}}" alt="">
+        <div class="text">
+            <h3>{{all.name}}</h3>
+            <p>{{all.alt}}</p>
+        </div>
+    </div>
+</div>
+

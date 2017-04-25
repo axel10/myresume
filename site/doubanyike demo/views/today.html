@@ -1,0 +1,68 @@
+<div class="listBox" ng-repeat="post in data.posts">
+    <span ng-if="post.column.name!= ''">
+        {{post.column.name}}
+    </span>
+    <div class="cont">
+        <h3>
+            {{post.title}}
+        </h3>
+        <div class="minBox" ng-if="post.display_style=='10002'">
+            <p>
+                {{post.abstract}}
+            </p>
+            <div class="img">
+                <img alt="" ng-src="{{post.thumbs[0].small.url}}">
+            </div>
+        </div>
+        <p ng-if="post.display_style=='10001'">
+            {{post.abstract}}
+        </p>
+        <div class="gallery" ng-if="post.display_style=='10003'">
+            <img alt="" ng-src="{{post.thumbs[0].large.url}}">
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--
+<div class="listBox">
+    <span>
+        什么鬼
+    </span>
+    <div class="cont">
+        <h3>
+            我是标题！！！！！！我是标题！！！！！！
+        </h3>
+        <div class="minBox">
+            <p>
+                虽说我真的不会自己研发新菜，想象不出食物混搭的味道。但生活里有这么多可以给我灵感的人，我做着她们的拿手菜与她们联系着……
+            </p>
+            <img alt="" src="img/1.jpg">
+            </img>
+        </div>
+    </div>
+</div>
+<div class="listBox">
+    <div class="cont">
+        <h3>
+            我是标题！！！！！！我是标题！！！！！！
+        </h3>
+        <p>
+            虽说我真的不会自己研发新菜，想象不出食物混搭的味道。但生活里有这么多可以给我灵感的人，我做着她们的拿手菜与她们联系着……虽说我真的不会自己研发新菜，想象不出食物混搭的味道。但生活里有这么多可以给我灵感的人……
+        </p>
+    </div>
+</div>
+<div class="listBox">
+    <div class="cont">
+        <h3>
+            我是标题！！！！！！我是标题！！！！！！
+        </h3>
+        <div class="gallery">
+            <img alt="" src="img/2.jpg">
+            </img>
+        </div>
+    </div>
+</div>-->

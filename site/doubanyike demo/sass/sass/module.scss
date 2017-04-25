@@ -1,0 +1,25 @@
+.module{
+    width: 100%;
+    background-color: #f8f8f8;
+    div{
+        height:6.5625rem;
+        width: 50%;
+        border-right:1px solid #ccc;
+        border-bottom:1px solid #ccc;
+        float:left;
+        padding-top: 1rem;
+        text-align: center;
+        font-family: "Microsoft YaHei";
+        color: #0f9c89;
+        img{
+            display: inline-block;
+            width: 1.875rem;
+        }
+        h4{
+            margin-top: 0.75rem;
+        }
+        p{
+            margin-top: 0.4rem;
+        }
+    }
+}

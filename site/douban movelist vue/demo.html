@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="app">
+    <input type="text" v-model="t1" @keyup="sync($event)">
+    <div class="box">{{t1}}</div>
+</div>
+
+
+<script src="js/ajax.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/vue.js">
+</script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:function () {
+            return {
+                t1:''
+            }
+        },
+        methods:{
+            sync:function (event) {
+                if(event.keyCode == 13){
+                    window.location.href = '#123123'
+                }
+            }
+        }
+    });
+
+    var a = 1;
+    switch (a){
+        case 1:
+            console.log(1);
+            break;
+        case 2:
+            console.log(2)
+    }
+</script>
+</body>
+</html>

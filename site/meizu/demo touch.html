@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: crimson;
+            transition: all 2s;
+        }
+    </style>
+</head>
+<body>
+<div class="box"></div>
+
+<script src="js/zepto.js"></script>
+<script>
+    window.onload = function () {
+        $('.box').css({transform:'translateX(500px)'});
+        $('.box').bind('webkitTransitionEnd',function () {
+            alert(1)
+        })
+    }
+</script>
+</body>
+</html>
